@@ -1,0 +1,6 @@
+book_filename: "CSU-con-gen-comp-2020"
+language:
+  ui:
+    chapter_name: "Week "
+delete_merged_file: true
+output_dir: "docs"

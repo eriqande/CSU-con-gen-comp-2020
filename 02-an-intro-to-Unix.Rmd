@@ -1,0 +1,33 @@
+# A one-week Unix crash course
+
+Preamble, preamble, preamble.
+
+---
+
+## Required Readings {-}
+
+1. [ECA-bioinf-handbook-Chapter-4](https://eriqande.github.io/eca-bioinf-handbook/essential-unixlinux-terminal-knowledge.html).  Read the whole
+thing before coming to class on Tuesday, and commit the terms in the "Unix study guide" (the long table at the end) to memory.
+
+## Recommended Readings {-}
+
+1. This
+2. That
+3. More
+
+## Exercises due by MM/DD/YYY {-}
+
+1. Links to notebooks that have the assignments.  Will make it
+easy for students to download extra material for each one.
+
+---
+
+## First topic for lecture
+
+## Second topic for lecture
+
+Boing
+
+
+
+

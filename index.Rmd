@@ -1,0 +1,93 @@
+--- 
+title: "Advanced Computing and Bioinformatics for Conservation Genomics. CSU FWCB/BZ 5XX"
+author: "**Instructors:** Eric C. Anderson and Kristen C. Ruegg"
+date: "**Site Last Updated:** `r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+description: "Course Website for CSU Con-Gen Computing Course"
+---
+
+
+# Course Overview {-}
+
+Welcome to the course web page for Advanced Computing and Bioinformatics for Conservation Genomics,
+an experimental course being offered for the first time in Winter Semester 2020.  The proposed course
+topics appear, by week, in the table below.  Each week of the course is structured as a different
+chapter in the navigation panel on the left.  In order to figure out what we are doing in the course
+each week, that will be the first place to check.  The week's objectives, readings, and exercises will
+be listed there.
+
+## Course Learning Objectives {-}
+
+Upon successful completion of the course, students will be able to:
+
+1.	Organize and execute a complex bioinformatic data-analysis project in a manner that makes it easily understood and reproduced by others.
+2.	Describe the main data formats used in genomic analysis, and know how to generate and manipulate them. 
+3.	Work with a wide range of the bioinformatic tools available in the Unix environment and understand how to script these tools into pipelines for DNA sequence alignment, variant calling, and analysis.
+4.	Understand how to break down complex genomic analysis projects into small, independent chunks and execute those using job arrays on a high performance computing cluster.
+5.	Perform a variety of computational analyses central to conservation genetics.
+
+
+## Assessment {-}
+
+Assessment will be based mostly on weekly problem sets.  These will sometimes require
+considerable time and thought, but they will be critical for solidifying the concepts
+and procedures in the course. Students will also be undertaking individual projects
+in which they apply the skills they have learned in the course to a data set
+relevant in some way to their own research (see [below](#indproj)).
+Finally, students are expected to contribute to discussion and participation in the course,
+including (and most importantly) being helpful to one another in order to learn challenging material,
+together, in a supportive environment.
+
+> "It is literally true that you can succeed best 
+> and quickest by helping others to succeed."
+>
+> `r tufte::quote_footer('-–- Napolean Hill')`
+
+
+&nbsp;
+
+
+Assessment Component | Percentage of Grade
+---------------------|-------------------
+Problem sets | 60%
+Individual analysis projects | 30%
+Class participation | 10%
+
+
+
+## Weekly Schedule {-}
+
+The schedule is subject to change as the semester proceeds, but this
+is what we are shooting for.
+
+
+
+Week  |	Lecture  Component	| Lab Component
+------|---------------------|---------------
+1	 | Rstudio Projects, GitHub	 | Rmarkdown, git and GitHub
+2	 | Unix, directory structure, utilities	| Unix, data compression
+3	 | Next generation sequencing, alignment conventions, FASTA, SAM | 	Samtools (faidx)
+4	 | Shell scripting and awk	| Shell scripting and awk
+5	 | Remote computers, ssh, rclone, HPC, SLURM, SGE |	Connecting to Summit Cluster
+6	 | Sequence alignment, job arrays, parallelization over individuals | bwa, samtools (sort, merge, cat, index)
+7	 | Variant calling – I, fundamental concepts | 	GATK, Base quality score recalibration
+8	 | Variant calling – II, parallelization over regions	| GATK, gVCFs, VCFs
+9	 | Variant Filtering, manipulation, exploration, LD and pop-gen statistics | bcftools, bedtools, R package ‘whoa’, plink  
+10 | Restriction-associated digest (RAD) sequencing | STACKS2, R package ‘radiator’
+11 | Visualization of genomic data in space	| R packages: ‘ggplot’, ‘sf’
+12 | Visualization of genomic data: trees | R packages: ‘ape’, ‘ggtree’
+13 | Population structure | R package ‘srsStuff’
+14 | Inbreeding, runs of homozygosity	| bcftools roh, plink
+15 | Genome wide association studies | ANGSD, snpEff
+16 | Genotype-environment association	| Gradient Random Forest, RDA
+
+
+## Individual Projects {-#indproj}
+
+Need to describe how these will work and the expectations.

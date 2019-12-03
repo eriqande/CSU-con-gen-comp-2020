@@ -1,0 +1,44 @@
+# Getting setup with Rstudio and GitHub
+
+It might seem strange to start a bioinformatics course with a segment
+on RStudio, since most bioinformatics takes place on large computer
+clusters which can't always be configured by individual users to
+play well with RStudio running on a server.  Not to mention the fact that
+R is not typically central to hard-core bioinformatic tasks in a 
+Unix environment.  However, bear with us.  Using RStudio sets you up
+with a great mechanism for recording your work in RMarkdown Notebooks,
+it provides a natural way to organize projects, it makes it trivial
+to keep your work version-controlled, and finally, when you have done
+all your bioinformatics, it is great for analysis of and figure preparation from
+the generated data in the R language.
+
+---
+
+## Required Readings {-}
+
+1. This
+2. That
+3. Etc
+
+## Recommended Readings {-}
+
+1. This
+2. That
+3. More
+
+## Exercises due by MM/DD/YYY {-}
+
+1. Links to notebooks that have the assignments.  Will make it
+easy for students to download extra material for each one.
+
+---
+
+## First topic for lecture
+
+## Second topic for lecture
+
+Boing
+
+
+
+

@@ -1,0 +1,657 @@
+\documentclass[]{book}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Advanced Computing and Bioinformatics for Conservation Genomics. CSU FWCB/BZ 5XX},
+            pdfauthor={Instructors: Eric C. Anderson and Kristen C. Ruegg},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{natbib}
+\bibliographystyle{apalike}
+\usepackage{longtable,booktabs}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{Advanced Computing and Bioinformatics for Conservation Genomics. CSU FWCB/BZ 5XX}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{\textbf{Instructors:} Eric C. Anderson and Kristen C. Ruegg}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{\textbf{Site Last Updated:} 2019-12-03}
+
+\usepackage{booktabs}
+\usepackage{amsthm}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{course-overview}{%
+\chapter*{Course Overview}\label{course-overview}}
+\addcontentsline{toc}{chapter}{Course Overview}
+
+Welcome to the course web page for Advanced Computing and Bioinformatics for Conservation Genomics,
+an experimental course being offered for the first time in Winter Semester 2020. The proposed course
+topics appear, by week, in the table below. Each week of the course is structured as a different
+chapter in the navigation panel on the left. In order to figure out what we are doing in the course
+each week, that will be the first place to check. The week's objectives, readings, and exercises will
+be listed there.
+
+\hypertarget{course-learning-objectives}{%
+\section*{Course Learning Objectives}\label{course-learning-objectives}}
+\addcontentsline{toc}{section}{Course Learning Objectives}
+
+Upon successful completion of the course, students will be able to:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Organize and execute a complex bioinformatic data-analysis project in a manner that makes it easily understood and reproduced by others.
+\item
+  Describe the main data formats used in genomic analysis, and know how to generate and manipulate them.
+\item
+  Work with a wide range of the bioinformatic tools available in the Unix environment and understand how to script these tools into pipelines for DNA sequence alignment, variant calling, and analysis.
+\item
+  Understand how to break down complex genomic analysis projects into small, independent chunks and execute those using job arrays on a high performance computing cluster.
+\item
+  Perform a variety of computational analyses central to conservation genetics.
+\end{enumerate}
+
+\hypertarget{assessment}{%
+\section*{Assessment}\label{assessment}}
+\addcontentsline{toc}{section}{Assessment}
+
+Assessment will be based mostly on weekly problem sets. These will sometimes require
+considerable time and thought, but they will be critical for solidifying the concepts
+and procedures in the course. Students will also be undertaking individual projects
+in which they apply the skills they have learned in the course to a data set
+relevant in some way to their own research (see \protect\hyperlink{indproj}{below}).
+Finally, students are expected to contribute to discussion and participation in the course,
+including (and most importantly) being helpful to one another in order to learn challenging material,
+together, in a supportive environment.
+
+\begin{quote}
+``It is literally true that you can succeed best
+and quickest by helping others to succeed.''
+
+\hfill ---- Napolean Hill
+\end{quote}
+
+~
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Assessment Component & Percentage of Grade\tabularnewline
+\midrule
+\endhead
+Problem sets & 60\%\tabularnewline
+Individual analysis projects & 30\%\tabularnewline
+Class participation & 10\%\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{weekly-schedule}{%
+\section*{Weekly Schedule}\label{weekly-schedule}}
+\addcontentsline{toc}{section}{Weekly Schedule}
+
+The schedule is subject to change as the semester proceeds, but this
+is what we are shooting for.
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\begin{minipage}[b]{0.13\columnwidth}\raggedright
+Week\strut
+\end{minipage} & \begin{minipage}[b]{0.46\columnwidth}\raggedright
+Lecture Component\strut
+\end{minipage} & \begin{minipage}[b]{0.33\columnwidth}\raggedright
+Lab Component\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.13\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
+Rstudio Projects, GitHub\strut
+\end{minipage} & \begin{minipage}[t]{0.33\columnwidth}\raggedright
+Rmarkdown, git and GitHub\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.13\columnwidth}\raggedright
+2\strut
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
+Unix, directory structure, utilities\strut
+\end{minipage} & \begin{minipage}[t]{0.33\columnwidth}\raggedright
+Unix, data compression\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.13\columnwidth}\raggedright
+3\strut
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
+Next generation sequencing, alignment conventions, FASTA, SAM\strut
+\end{minipage} & \begin{minipage}[t]{0.33\columnwidth}\raggedright
+Samtools (faidx)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.13\columnwidth}\raggedright
+4\strut
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
+Shell scripting and awk\strut
+\end{minipage} & \begin{minipage}[t]{0.33\columnwidth}\raggedright
+Shell scripting and awk\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.13\columnwidth}\raggedright
+5\strut
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
+Remote computers, ssh, rclone, HPC, SLURM, SGE\strut
+\end{minipage} & \begin{minipage}[t]{0.33\columnwidth}\raggedright
+Connecting to Summit Cluster\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.13\columnwidth}\raggedright
+6\strut
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
+Sequence alignment, job arrays, parallelization over individuals\strut
+\end{minipage} & \begin{minipage}[t]{0.33\columnwidth}\raggedright
+bwa, samtools (sort, merge, cat, index)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.13\columnwidth}\raggedright
+7\strut
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
+Variant calling -- I, fundamental concepts\strut
+\end{minipage} & \begin{minipage}[t]{0.33\columnwidth}\raggedright
+GATK, Base quality score recalibration\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.13\columnwidth}\raggedright
+8\strut
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
+Variant calling -- II, parallelization over regions\strut
+\end{minipage} & \begin{minipage}[t]{0.33\columnwidth}\raggedright
+GATK, gVCFs, VCFs\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.13\columnwidth}\raggedright
+9\strut
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
+Variant Filtering, manipulation, exploration, LD and pop-gen statistics\strut
+\end{minipage} & \begin{minipage}[t]{0.33\columnwidth}\raggedright
+bcftools, bedtools, R package `whoa', plink\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.13\columnwidth}\raggedright
+10\strut
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
+Restriction-associated digest (RAD) sequencing\strut
+\end{minipage} & \begin{minipage}[t]{0.33\columnwidth}\raggedright
+STACKS2, R package `radiator'\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.13\columnwidth}\raggedright
+11\strut
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
+Visualization of genomic data in space\strut
+\end{minipage} & \begin{minipage}[t]{0.33\columnwidth}\raggedright
+R packages: `ggplot', `sf'\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.13\columnwidth}\raggedright
+12\strut
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
+Visualization of genomic data: trees\strut
+\end{minipage} & \begin{minipage}[t]{0.33\columnwidth}\raggedright
+R packages: `ape', `ggtree'\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.13\columnwidth}\raggedright
+13\strut
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
+Population structure\strut
+\end{minipage} & \begin{minipage}[t]{0.33\columnwidth}\raggedright
+R package `srsStuff'\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.13\columnwidth}\raggedright
+14\strut
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
+Inbreeding, runs of homozygosity\strut
+\end{minipage} & \begin{minipage}[t]{0.33\columnwidth}\raggedright
+bcftools roh, plink\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.13\columnwidth}\raggedright
+15\strut
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
+Genome wide association studies\strut
+\end{minipage} & \begin{minipage}[t]{0.33\columnwidth}\raggedright
+ANGSD, snpEff\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.13\columnwidth}\raggedright
+16\strut
+\end{minipage} & \begin{minipage}[t]{0.46\columnwidth}\raggedright
+Genotype-environment association\strut
+\end{minipage} & \begin{minipage}[t]{0.33\columnwidth}\raggedright
+Gradient Random Forest, RDA\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{indproj}{%
+\section*{Individual Projects}\label{indproj}}
+\addcontentsline{toc}{section}{Individual Projects}
+
+Need to describe how these will work and the expectations.
+
+\hypertarget{getting-setup-with-rstudio-and-github}{%
+\chapter{Getting setup with Rstudio and GitHub}\label{getting-setup-with-rstudio-and-github}}
+
+It might seem strange to start a bioinformatics course with a segment
+on RStudio, since most bioinformatics takes place on large computer
+clusters which can't always be configured by individual users to
+play well with RStudio running on a server. Not to mention the fact that
+R is not typically central to hard-core bioinformatic tasks in a
+Unix environment. However, bear with us. Using RStudio sets you up
+with a great mechanism for recording your work in RMarkdown Notebooks,
+it provides a natural way to organize projects, it makes it trivial
+to keep your work version-controlled, and finally, when you have done
+all your bioinformatics, it is great for analysis of and figure preparation from
+the generated data in the R language.
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\hypertarget{required-readings}{%
+\section*{Required Readings}\label{required-readings}}
+\addcontentsline{toc}{section}{Required Readings}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  This
+\item
+  That
+\item
+  Etc
+\end{enumerate}
+
+\hypertarget{recommended-readings}{%
+\section*{Recommended Readings}\label{recommended-readings}}
+\addcontentsline{toc}{section}{Recommended Readings}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  This
+\item
+  That
+\item
+  More
+\end{enumerate}
+
+\hypertarget{exercises-due-by-mmddyyy}{%
+\section*{Exercises due by MM/DD/YYY}\label{exercises-due-by-mmddyyy}}
+\addcontentsline{toc}{section}{Exercises due by MM/DD/YYY}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Links to notebooks that have the assignments. Will make it
+  easy for students to download extra material for each one.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\hypertarget{first-topic-for-lecture}{%
+\section{First topic for lecture}\label{first-topic-for-lecture}}
+
+\hypertarget{second-topic-for-lecture}{%
+\section{Second topic for lecture}\label{second-topic-for-lecture}}
+
+Boing
+
+\hypertarget{a-one-week-unix-crash-course}{%
+\chapter{A one-week Unix crash course}\label{a-one-week-unix-crash-course}}
+
+Preamble, preamble, preamble.
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\hypertarget{required-readings-1}{%
+\section*{Required Readings}\label{required-readings-1}}
+\addcontentsline{toc}{section}{Required Readings}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \href{https://eriqande.github.io/eca-bioinf-handbook/essential-unixlinux-terminal-knowledge.html}{ECA-bioinf-handbook-Chapter-4}. Read the whole
+  thing before coming to class on Tuesday, and commit the terms in the ``Unix study guide'' (the long table at the end) to memory.
+\end{enumerate}
+
+\hypertarget{recommended-readings-1}{%
+\section*{Recommended Readings}\label{recommended-readings-1}}
+\addcontentsline{toc}{section}{Recommended Readings}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  This
+\item
+  That
+\item
+  More
+\end{enumerate}
+
+\hypertarget{exercises-due-by-mmddyyy-1}{%
+\section*{Exercises due by MM/DD/YYY}\label{exercises-due-by-mmddyyy-1}}
+\addcontentsline{toc}{section}{Exercises due by MM/DD/YYY}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Links to notebooks that have the assignments. Will make it
+  easy for students to download extra material for each one.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\hypertarget{first-topic-for-lecture-1}{%
+\section{First topic for lecture}\label{first-topic-for-lecture-1}}
+
+\hypertarget{second-topic-for-lecture-1}{%
+\section{Second topic for lecture}\label{second-topic-for-lecture-1}}
+
+Boing
+
+\hypertarget{next-generation-sequencing-and-associated-conventions}{%
+\chapter{Next generation sequencing and associated conventions}\label{next-generation-sequencing-and-associated-conventions}}
+
+Preamble, preamble, preamble.
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\hypertarget{required-readings-2}{%
+\section*{Required Readings}\label{required-readings-2}}
+\addcontentsline{toc}{section}{Required Readings}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Write another chapter in the handbook for this
+\end{enumerate}
+
+\hypertarget{recommended-readings-2}{%
+\section*{Recommended Readings}\label{recommended-readings-2}}
+\addcontentsline{toc}{section}{Recommended Readings}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  This
+\item
+  That
+\item
+  More
+\end{enumerate}
+
+\hypertarget{exercises-due-by-mmddyyy-2}{%
+\section*{Exercises due by MM/DD/YYY}\label{exercises-due-by-mmddyyy-2}}
+\addcontentsline{toc}{section}{Exercises due by MM/DD/YYY}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Links to notebooks that have the assignments. Will make it
+  easy for students to download extra material for each one.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\hypertarget{first-topic-for-lecture-2}{%
+\section{First topic for lecture}\label{first-topic-for-lecture-2}}
+
+\hypertarget{second-topic-for-lecture-2}{%
+\section{Second topic for lecture}\label{second-topic-for-lecture-2}}
+
+Boing
+
+\hypertarget{unix-scripting-awk-regular-expressions}{%
+\chapter{Unix scripting, awk, regular expressions}\label{unix-scripting-awk-regular-expressions}}
+
+Preamble, preamble, preamble.
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\hypertarget{required-readings-3}{%
+\section*{Required Readings}\label{required-readings-3}}
+\addcontentsline{toc}{section}{Required Readings}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Handbook, chapters 5 and 6.
+\end{enumerate}
+
+\hypertarget{recommended-readings-3}{%
+\section*{Recommended Readings}\label{recommended-readings-3}}
+\addcontentsline{toc}{section}{Recommended Readings}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  This
+\item
+  That
+\item
+  More
+\end{enumerate}
+
+\hypertarget{exercises-due-by-mmddyyy-3}{%
+\section*{Exercises due by MM/DD/YYY}\label{exercises-due-by-mmddyyy-3}}
+\addcontentsline{toc}{section}{Exercises due by MM/DD/YYY}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Links to notebooks that have the assignments. Will make it
+  easy for students to download extra material for each one.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\hypertarget{first-topic-for-lecture-3}{%
+\section{First topic for lecture}\label{first-topic-for-lecture-3}}
+
+\hypertarget{second-topic-for-lecture-3}{%
+\section{Second topic for lecture}\label{second-topic-for-lecture-3}}
+
+Boing
+
+\hypertarget{remote-computers-and-hpc}{%
+\chapter{Remote computers and HPC}\label{remote-computers-and-hpc}}
+
+Preamble, preamble, preamble.
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\hypertarget{required-readings-4}{%
+\section*{Required Readings}\label{required-readings-4}}
+\addcontentsline{toc}{section}{Required Readings}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Handbook, parts of chapter 7.
+\end{enumerate}
+
+\hypertarget{recommended-readings-4}{%
+\section*{Recommended Readings}\label{recommended-readings-4}}
+\addcontentsline{toc}{section}{Recommended Readings}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  This
+\item
+  That
+\item
+  More
+\end{enumerate}
+
+\hypertarget{exercises-due-by-mmddyyy-4}{%
+\section*{Exercises due by MM/DD/YYY}\label{exercises-due-by-mmddyyy-4}}
+\addcontentsline{toc}{section}{Exercises due by MM/DD/YYY}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Links to notebooks that have the assignments. Will make it
+  easy for students to download extra material for each one.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\hypertarget{first-topic-for-lecture-4}{%
+\section{First topic for lecture}\label{first-topic-for-lecture-4}}
+
+\hypertarget{second-topic-for-lecture-4}{%
+\section{Second topic for lecture}\label{second-topic-for-lecture-4}}
+
+Boing
+
+\hypertarget{sequence-alignment}{%
+\chapter{Sequence alignment}\label{sequence-alignment}}
+
+Preamble, preamble, preamble.
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\hypertarget{required-readings-5}{%
+\section*{Required Readings}\label{required-readings-5}}
+\addcontentsline{toc}{section}{Required Readings}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Hmm\ldots{}
+\end{enumerate}
+
+\hypertarget{recommended-readings-5}{%
+\section*{Recommended Readings}\label{recommended-readings-5}}
+\addcontentsline{toc}{section}{Recommended Readings}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  This
+\item
+  That
+\item
+  More
+\end{enumerate}
+
+\hypertarget{exercises-due-by-mmddyyy-5}{%
+\section*{Exercises due by MM/DD/YYY}\label{exercises-due-by-mmddyyy-5}}
+\addcontentsline{toc}{section}{Exercises due by MM/DD/YYY}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Links to notebooks that have the assignments. Will make it
+  easy for students to download extra material for each one.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\hypertarget{first-topic-for-lecture-5}{%
+\section{First topic for lecture}\label{first-topic-for-lecture-5}}
+
+\hypertarget{second-topic-for-lecture-5}{%
+\section{Second topic for lecture}\label{second-topic-for-lecture-5}}
+
+Boing
+
+\bibliography{book.bib,packages.bib}
+
+
+\end{document}

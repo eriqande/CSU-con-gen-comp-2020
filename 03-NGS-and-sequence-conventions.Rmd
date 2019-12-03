@@ -1,0 +1,32 @@
+# Next generation sequencing and associated conventions
+
+Preamble, preamble, preamble.
+
+---
+
+## Required Readings {-}
+
+1. Write another chapter in the handbook for this
+
+## Recommended Readings {-}
+
+1. This
+2. That
+3. More
+
+## Exercises due by MM/DD/YYY {-}
+
+1. Links to notebooks that have the assignments.  Will make it
+easy for students to download extra material for each one.
+
+---
+
+## First topic for lecture
+
+## Second topic for lecture
+
+Boing
+
+
+
+
