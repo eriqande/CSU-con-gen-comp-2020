@@ -6,3 +6,6 @@ _book
 _bookdown_files
 rsconnect
 LICENSE
+now.json
+book.bib
+packages.bib
