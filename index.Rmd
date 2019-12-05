@@ -28,6 +28,14 @@ chapter in the navigation panel on the left.  In order to figure out what we are
 each week, that will be the first place to check.  The week's objectives, readings, and exercises will
 be listed there.
 
+## Course schedule {-}
+
+The course schedule is currently set at:
+
+- Tu,Th  11:00-12:15 in BIO 133.  Lectures
+- Wed 9:00-9:50 in BIO 133. Discussion/Computer lab
+
+Students are expected to have a laptop.
 
 ## Course Learning Objectives {-}
 
