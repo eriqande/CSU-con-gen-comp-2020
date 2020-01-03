@@ -1,4 +1,7 @@
-# Getting setup with Rstudio and GitHub
+---
+output: html_document
+---
+# Getting setup with Rstudio, A Bash Shell, and GitHub
 
 It might seem strange to start a bioinformatics course with a segment
 on RStudio, since most bioinformatics takes place on large computer
@@ -12,7 +15,16 @@ to keep your work version-controlled, and finally, when you have done
 all your bioinformatics, it is great for analysis of and figure preparation from
 the generated data in the R language.
 
+This week is mostly about getting everyone's laptop configured
+to use RStudio, to compile RMarkdown documents, and to use git and GitHub which
+are necessary for getting and submitting the homework assignments in this course.
+
+
 ---
+
+## Lecture Slides
+
+- [setting-up-your-system.html](slides-and-things/setting-up-your-system.html)
 
 ## Required Readings {-}
 
@@ -32,13 +44,4 @@ the generated data in the R language.
 easy for students to download extra material for each one.
 
 ---
-
-## First topic for lecture
-
-## Second topic for lecture
-
-Boing
-
-
-
 

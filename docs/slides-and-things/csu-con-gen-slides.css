@@ -1,0 +1,46 @@
+body {
+    color: black;
+}
+
+h1 {
+    color: blue;
+}
+
+h3 {
+    color: #550080;
+}
+
+/* unvisited link */
+a:link {
+  color: hotpink;
+}
+
+/* visited link */
+a:visited {
+  color: hotpink;
+}
+
+/* mouse over link */
+a:hover {
+  color: green;
+}
+
+/* selected link */
+a:active {
+  color: hotpink;
+}
+
+
+#head-logo {
+  margin: 0;
+  margin-top: 0.05em;
+  padding-top: 0.05em;
+  padding-bottom: 0.2em;
+  padding-left: 0;
+  padding-right: 0.65em;
+  height: 3.4em;
+  width: 3.4em;
+  float: right;
+  z-index: 2;
+}
+
