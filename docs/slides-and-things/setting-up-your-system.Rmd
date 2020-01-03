@@ -32,6 +32,7 @@ are largely the same for either system.
 
 **On Windows:** You should also go back to the cran downloads page and download and install the **Rtools35.exe**.  This will let you compile and build R packages on your computer.
 
+Kristen suggested adding a line here.
 
 ### RStudio
 
