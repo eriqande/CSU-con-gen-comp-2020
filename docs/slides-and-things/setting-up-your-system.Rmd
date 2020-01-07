@@ -15,6 +15,59 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 
+## Overview
+
+A quick what and why to the installations and configurations:
+
+### R
+
+Although R is not generally revered as a hard core bioinformatic language/environment 
+(but see [https://www.bioconductor.org/](https://www.bioconductor.org/), a set of R packages for 
+HTS data that we won't use too much in this course), it is in widespread use
+in ecology, and any chance to get more familiar with it is beneficial.
+
+### RStudio
+
+An integrated development environment (IDE) for writing R code (and much more).
+This is where we will spend most of our programming time in this course, because it:
+
++ provides a fine editor for R, shell scripts, markdown, etc.
++ encourages organization of research into single-directory based _projects_ that make
+tend to make one's work more easily reproduced.
++ Extraorinarily good integration with RMarkdown, which is a great markup language for
+documenting your work at your computer (and presenting it...the website for this course
+and all the lecture slides, etc. have been written using RMarkdown and extensions for
+it maintained by the dedicated crew at RStudio).
++ provides an excellent interface to git and GitHub (see below.)
+
+### Bash 
+
+The so-called "Bourne-again shell" for dealing with Unix and writing Unix scripts.
+Most of our hard-core bioinformatic analysis will take place on supercomputers, which all run
+Unix.  However, it is really nice to have a Unix installation on your own laptop to experiment
+with. Mac's are already Unix-based and come standard with bash, but Windows PCs are not.
+Git Bash provides an environmentthat emulates a Unix shell on Windows.
+
+### git
+
+This is the underlying program that provides a "distributed version control" system.
+We will go into more details of its inner workings later in the week.  You will use it
+extensively to store versions of your homework, etc., and by the end of the semester I hope
+that everyone is familiar enough with it to make use of it in their own research programs.
+
+### GitHub
+
+This is a website that lets you store copies of your work, research, code, etc.
+In my opinion, it is one of the most important developments for doing reproducible and
+collaborative research in the last decade.
+All the materials for this course are served up from GitHub.  The course is also enrolled
+in GitHub Classroom.  All homework assignments will be obtained and submitted through GitHub.
+
+### Testing
+
+At the end, we'll have everyone open a small RStudio project from GitHub to make
+sure everything is working.
+
 
 ## R and Rstudio Installations
 
@@ -39,8 +92,22 @@ are largely the same for either system.
 1. Get the free desktop version from [https://rstudio.com/products/rstudio/download/](https://rstudio.com/products/rstudio/download/) 
 1. install the appropriate one for your OS.
 
+Once this is done, open RStudio and immediately set some settings:
+
+* Choose RStudio -> Preferences, Choose "General" in the left panel, and with the "Basic" tab
+selected make sure that "Restore .RData into workspace at startup" is **unchecked**. And that
+"Save workspace to .RData on exit" is set to **Never**.  
+* Then choose RMarkdowon from the left panel and make sure that your settings look like this:
+
+```{r}
+knitr::include_graphics("images/rmarkdown-settings.png")
+```
+
 
 ### Some R Packages
+
+There are some packages that should be installed now.  Enter the lines of
+code listed below (in the code blocks) into the R Console in RStudio.
 
 - **bookdown:** This package is what I used to create these course notes.  Getting it automatically installs a lot of 
 other packages that are useful for authoring reproducible research.
@@ -188,9 +255,69 @@ users like students: free private repositories.  Please go to [https://education
 to sign up for your free student pack.  
 
 
-## Check out an Rstudio project
+## Check out an Rstudio project and test your installations
 
-I am going to have the students check out a small project and run
-a notebook to make sure that everything is working correctly.
+
+I've prepared a small RStudio project and I have put it onto GitHub.  We can use this
+to make sure that most of the installations are working properly.
+
+Steps to get it:
+
+1. Quit RStudio completely (in case it needs to detect any new paths that you
+have set up)
+1. Open RStudio
+2. Choose File -> New Project...
+3. In the dialog window choose "Version Control, checkout a project from a version control repository"
+4. In the next dialog window choose "Git, clone a project from a Git repository"
+5. In the next dialog window copy and paste the following URL into
+the "Repository URL" text entry box:
+    ```{sh, echo=TRUE, eval=FALSE}
+    https://github.com/eriqande/minimal-test-of-installations
+    ```
+And then, using the "Browse" button, select a destination on your
+local hard drive to save the resulting
+RStudio project.  You should consider having a directory where all your work for
+the course will go.  
+6. Click "Create Project"
+
+If everything goes right (i.e., if git is successfully installed) this will create
+a new RStudio project and open up the associated project window for it.  
+
+Now, from the file browser (bottom left pane, typically) click on `example.Rmd`.  When that
+is open, click the "Knit" button on the top of the upper left pane.  
+
+If all is right, this will bring up a new window some html output.  It should look
+exactly like the file "expected-output.html" in the project.  You can open that file
+by clicking on it in the RStudio file browser window and choosing "View in Web Browser."
+
+
+## Create a New RStudio Project and Push it to GitHub
+
+The last exercise was good for making sure that all the local installations were working.
+Now, we want to make sure that you can push things up to your own GitHub account.
+
+To do that. You will all create a new repository with git version control on your laptop, then
+you will create a repository on GitHub and push your local repository up to it.
+
+### Create a new RStudio Project
+
+1. In RStudio, choose File -> New Project...
+1. At the dialog window choose "New Directory"
+1. At the next window ("Project Type") Choose "New Project"
+1. At the next window ("Create New Project") Under "Directory name" enter "a-first-project".
+That is the name for this project.  Then select where on your hard drive that should be.  And finally, this is very important, **be sure to check the box for "Create a git repository."**.  Then click "Create Project."
+
+### Commit your files and play with git
+
+Once you have created that project, we will talk a little about how git works, and
+about RStudio's interface to it.
+
+### Initialize an empty repository on GitHub and push your repository to it
+
+Make it public. No README, no other initializations.
+
+### Do successive commits and pushes and pulls 
+
+Make sure that password caching is working.
 
 

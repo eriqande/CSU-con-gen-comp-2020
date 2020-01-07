@@ -28,7 +28,8 @@ are necessary for getting and submitting the homework assignments in this course
 
 ## Required Readings {-}
 
-1. This
+1. Download the [RStudio IDE Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf).  Study it and keep it close by on your computer
+for frequent reference.
 2. That
 3. Etc
 
