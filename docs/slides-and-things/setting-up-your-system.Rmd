@@ -1,7 +1,7 @@
 ---
 title: "Setting Up Your System"
 author: "Eric C. Anderson"
-date: "1/2/2020"
+date: "1/21/2020"
 output: 
   slidy_presentation:
     css: csu-con-gen-slides.css
