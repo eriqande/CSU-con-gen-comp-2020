@@ -39,10 +39,10 @@ for frequent reference.
 2. That
 3. More
 
-## Exercises due by MM/DD/YYY {-}
+## Exercises due by Friday January 24, 2020 at 5:00 PM {-}
 
-1. Links to notebooks that have the assignments.  Will make it
-easy for students to download extra material for each one.
+1. You will be doing the exercises outlined in this [template repository](https://github.com/eriqande/rmarkdown-introduction).  **But students in the class, don't clone that and work from that repository**.  You will all get your own repositories to work on using GitHub Classroom.
+
 
 ---
 
