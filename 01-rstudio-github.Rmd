@@ -24,20 +24,21 @@ are necessary for getting and submitting the homework assignments in this course
 
 ## Lecture Slides
 
-- [setting-up-your-system.html](slides-and-things/setting-up-your-system.html)
+- [setting-up-your-system.html](slides-and-things/setting-up-your-system.html) (For Tuesday)
+- [git-and-github.html](git-and-github.html) (For Thursday)
 
 ## Required Readings {-}
 
-1. Download the [RStudio IDE Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf).  Study it and keep it close by on your computer
-for frequent reference.
-2. That
-3. Etc
+
+1. Download the [RStudio IDE Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf).  Study it and keep it close by on your computer for frequent reference. (Read it Before/During Tuesday's class).
+1. Download the [RStudio Rmarkdown Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf) and peruse it before Wednesday's Computer lab session.
+
 
 ## Recommended Readings {-}
 
-1. This
-2. That
-3. More
+1. [Chapter 8 of _R for Data Science_](https://r4ds.had.co.nz/workflow-projects.html). A quick primer on RStudio projects and ways to configure RStudio.
+
+
 
 ## Exercises due by Friday January 24, 2020 at 5:00 PM {-}
 

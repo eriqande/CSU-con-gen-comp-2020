@@ -1,8 +1,12 @@
 # A one-week Unix crash course
 
-Preamble, preamble, preamble.
+Learning the basics of Unix.
 
 ---
+
+## Lectures 
+
+- To be linked soon.
 
 ## Required Readings {-}
 
@@ -11,23 +15,8 @@ thing before coming to class on Tuesday, and commit the terms in the "Unix study
 
 ## Recommended Readings {-}
 
-1. This
-2. That
-3. More
-
-## Exercises due by MM/DD/YYY {-}
-
-1. Links to notebooks that have the assignments.  Will make it
-easy for students to download extra material for each one.
-
----
-
-## First topic for lecture
-
-## Second topic for lecture
-
-Boing
 
 
+## Exercises due by Friday January 31, 2020 at 5:00 PM {-}
 
-
+1. You will be doing the exercises in `unix-homework.Rmd` within this [template repository](https://github.com/eriqande/teeny-genomic-data).  **But students in the class, don't clone that and work from that repository**.  You will all get your own repositories to work on using GitHub Classroom.
