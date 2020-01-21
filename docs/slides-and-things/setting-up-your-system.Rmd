@@ -237,9 +237,9 @@ On a Mac, there is one further step that will help you not have to
 re-type your password every time git communicates with GitHub.  (On Windows,
 if you installed Git/Bash for Windows according to the directions given earlier, 
 this type of feature should already be enabled.
-    ```{sh, eval=FALSE, echo=TRUE}
-    git config --global credential.helper osxkeychain
-    ```
+```{sh, eval=FALSE, echo=TRUE}
+git config --global credential.helper osxkeychain
+```
 
 
 ## Get an account on GitHub
@@ -314,7 +314,20 @@ about RStudio's interface to it.
 
 ### Initialize an empty repository on GitHub and push your repository to it
 
-Make it public. No README, no other initializations.
+* From your GitHub home page, click the green "New" button.
+* In the repository name box, type `a-first-project`
+* Include a short description if you want to.
+* Leave it a Public repository.
+* **Do Not** Initialize with a README.
+* **Do Not** Add .gitignore or a license
+* Hit Create Repository
+
+At this point you get two command lines under **"…or push an existing repository from the command line"**.
+
+In your RStudio "a-first-project" project, choose Tools->Terminal->New Terminal, and paste those two command lines into there and hit return.  That should push your project up to GitHub.
+
+
+
 
 ### Do successive commits and pushes and pulls 
 
