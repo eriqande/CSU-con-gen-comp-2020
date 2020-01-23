@@ -25,7 +25,7 @@ are necessary for getting and submitting the homework assignments in this course
 ## Lecture Slides
 
 - [setting-up-your-system.html](slides-and-things/setting-up-your-system.html) (For Tuesday)
-- [git-and-github.html](git-and-github.html) (For Thursday)
+- [git-and-github.html](slides-and-things/git-and-github.html) (For Thursday)
 
 ## Required Readings {-}
 

@@ -14,6 +14,13 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+## -
+
+```{r, echo=FALSE, out.width="800px"}
+knitr::include_graphics("images/condescending-unix.png")
+```
+
+
 ## Paths 1
 
 * Absolute paths start with `/`
