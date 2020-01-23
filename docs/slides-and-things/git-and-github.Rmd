@@ -188,6 +188,7 @@ Goals for Today:
     + viewing differences between staged and unstaged files
     + committing files
     + viewing the commit history
+ * Practice forking
 
 ## An overview of Version Control Systems (VCS) {#vcs}
 
