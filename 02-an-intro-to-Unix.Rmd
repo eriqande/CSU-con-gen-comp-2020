@@ -6,7 +6,7 @@ Learning the basics of Unix.
 
 ## Lectures 
 
-- To be linked soon.
+- [unix-intro.html](slides-and-things/unix-intro.html) (For Tuesday)
 
 ## Required Readings {-}
 

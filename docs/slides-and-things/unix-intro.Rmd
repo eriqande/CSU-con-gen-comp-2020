@@ -1,0 +1,146 @@
+---
+title: "A First Introduction to Unix / the Bash Shell"
+author: "Eric C. Anderson"
+date: "1/28/2020"
+output: 
+  slidy_presentation:
+    css: csu-con-gen-slides.css
+    footer: "&nbsp;&nbsp;&nbsp;Written by Eric C. Anderson using rmarkdown slidy. &nbsp;&nbsp; Click <a href='https://github.com/eriqande/CSU-con-gen-comp-2020/edit/master/docs/slides-and-things/unix-intro.Rmd'>here</a> to suggest edits via GitHub."
+    includes:
+      before_body: csu-con-gen-doc-prefix.html
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Paths 1
+
+* Absolute paths start with `/`
+* On a Unix system, `/` is the "root" directory.  (Sort of like `C:\\` on Windows...)
+* Typically you won't use absolute paths much in your research repositories because _they are not reproducible_.
+
+## Paths 2
+
+* A relative path is a path that does not start with `/`. 
+* Where it points is relative to the _current working directory_.
+* `..` means "up one level"
+
+## Paths 3
+
+* Your home directory is where you will "start your day" in Unix,
+    - Also where you will spend most of your time.
+* Its absolute path will be something like `/home/eriq` or `/Users/eriq` or whatever.  But you can always use `~` to mean "my home directory"
+* `~/Documents/git-repos`
+
+## A First Configuration (and a chance to learn a simple text editor called `nano`)
+
+### Modify your `.bash_profile`
+
+```sh
+# make sure you are in home directory
+cd
+
+# now edit your .bash_profile
+nano .bash_profile
+```
+If you don't have anything in your .bash_profile then add these lines,
+exit (^X) and save:
+```sh
+
+if [ -f ~/.bashrc ]; then
+    source ~/.bashrc
+fi
+
+```
+If you do have something in your bash profile already, talk to me first.
+
+
+### Modify your `.bashrc`
+
+```sh
+nano .bashrc
+```
+
+Then add this line (and maybe the others) and save it:
+```sh
+export PS1='[\W]--% '
+
+# on windows you might want to add this:
+alias ls='ls --color'
+```
+
+
+### Make that active
+
+```sh
+source .bashrc
+```
+
+Now you command prompt should be less ugly.
+
+## `cd` and `ls`
+
+### For moving amongst directories
+
+* `cd` _path_ changes directory.  
+* With no argument (_path_) it returns you to your home directory
+* `cd -` returns you to the last directory you were in
+
+### For listing what is in directories:
+
+* `ls` _path_
+* Important options to `ls`:
+    - `-l`  :  long output
+    - `-a`  :  show hidden files
+    - `-d`  :  list name of directory only, not contents
+    - `-R`  :  recursively show all subdirectories and their contents
+    - `-lrt` : three options bunged together! long listing 
+    of files (`l`), in reverse order (`r`) sorted by time (`t`).
+    
+
+
+## TAB Completion
+
+* It is the only way to survive on the command line.
+* TAB early. TAB often.
+
+## The `open` command on a Mac (and on Windows in the RStudio Terminal)
+
+* Macs have a great little command called `open`
+* Not a standard Unix command, but super useful on your own laptop.
+* Use it like: `open` _path_.
+* The effect is like "double-clicking" _path_ in the Finder window.
+* `open .` opens a Finder window set to the current working directory.
+* `open a-project.Rproj` opens the project in RStudio.
+* `open document.docx` opens `document` in MS Word.
+* `open some-document.html` opens an HTML file on your computer in your default browser.
+* etc.
+
+## `open` command on Windows
+
+* This is provided by R, apparently.  
+* It works by default in RStudio Unix Terminals.
+* If you want this in your Command Prompt shell, you can add
+this line to your `.bashrc` file:
+```sh
+alias open='/c/Program Files/R/R-3.6.2/bin/x64/open"
+```
+
+## Take the Command Line Pledge!
+
+Raise your right hand and repeat after me:
+
+_I do solemnly swear to forsake use of the Finder window on Mac or the File Explorer on Windows for all but the occasional trivial task. I know that I can navigate anywhere on my laptop using the Unix command line. I shall not yield to the temptation of a simple point-and-click graphical user interface (GUI), but shall persevere in the name of becoming an expert at TAB completion, path navigation, globbing, and the use of `cd`, `ls`, `mv`, `cp`, and `rm`.  I shall refrain from double-clicking upon a file for the remainder of the semester, choosing instead the salubrious method of using the `open` command.  I recognize that I am a recovering GUI user, and that I will always be one, and, as such, I am not able to safely "use the Finder window just a little bit." It is in my best interests as a scientist/researcher/data analyst/bioinformatician to, from this day forward, navigate my laptop's file system from the Unix shell._
+
+It sounds a little silly, but if you do prohibit yourself from using 
+the Finder Window / File Explorer on your laptop, and instead
+force yourself to navigate
+it from your Unix shell, you will quickly become proficient at that.
+
+That turns out to be a crucial skill for doing bioinformatics.
+
+Eventually, you will be astounded by how inefficient the Finder window feels.
+
+Now, take 10 minutes to play around with that.
+
