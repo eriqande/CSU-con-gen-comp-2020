@@ -150,7 +150,7 @@ Now, your command prompt should be less ugly.
 * If you want this in your Command Prompt shell, you can add
 this line to your `.bashrc` file:
 ```sh
-alias open='/c/Program Files/R/R-3.6.2/bin/x64/open"
+alias open='/c/Program Files/R/R-3.6.2/bin/x64/open'
 ```
 
 ## Take the Command Line Pledge!

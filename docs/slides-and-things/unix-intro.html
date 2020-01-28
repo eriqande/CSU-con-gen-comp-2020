@@ -565,7 +565,7 @@ Eric C. Anderson
 <li>It works by default in RStudio Unix Terminals.</li>
 <li>If you want this in your Command Prompt shell, you can add this line to your <code>.bashrc</code> file:</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="bu">alias</span> open=<span class="st">'/c/Program Files/R/R-3.6.2/bin/x64/open&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="bu">alias</span> open=<span class="st">'/c/Program Files/R/R-3.6.2/bin/x64/open'</span></a></code></pre></div>
 </div>
 <div id="take-the-command-line-pledge" class="slide section level2">
 <h1>Take the Command Line Pledge!</h1>
@@ -655,8 +655,13 @@ Eric C. Anderson
 <a class="sourceLine" id="cb15-2" data-line-number="2"><span class="fu">head</span> /tmp/myfile.txt</a>
 <a class="sourceLine" id="cb15-3" data-line-number="3"><span class="fu">wc</span> /tmp/myfile.txt</a>
 <a class="sourceLine" id="cb15-4" data-line-number="4"><span class="fu">du</span> -h /tmp/myfile.txt</a></code></pre></div>
-<p>Break down the first command. What is it doing?</p>
+<p>Break down the first command. What is it doing? Where does the redirection happen?</p>
 <p>How about the next few lines? What do people think this is going to do?</p>
+</div>
+<div id="pipe-stdout-to-another-command" class="slide section level2">
+<h1>Pipe <em>stdout</em> to another command</h1>
+<p>What happens when we do this:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="fu">ls</span> -l ~ <span class="kw">|</span> <span class="fu">wc</span> </a></code></pre></div>
 </div>
 
   <!-- dynamically load mathjax for compatibility with self-contained -->
