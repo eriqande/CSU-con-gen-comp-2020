@@ -663,6 +663,173 @@ Eric C. Anderson
 <p>What happens when we do this:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="fu">ls</span> -l ~ <span class="kw">|</span> <span class="fu">wc</span> </a></code></pre></div>
 </div>
+<div id="thursday-administrative-stuff-etc." class="slide section level2">
+<h1>THURSDAY Administrative stuff, etc.:</h1>
+<ol style="list-style-type: decimal">
+<li>Homework is due Friday at 5 PM
+<ul>
+<li>I will give out a key over the weekend.</li>
+<li>I am contemplating having each student “grade” (i.e., comment on GitHub via a pull request) another (random) student’s homework.</li>
+<li>If you won’t have your homework done and available for communal grading by Saturday noon, please email me.</li>
+</ul></li>
+<li><p>I have put the link to the course <a href="https://github.com/CSU-con-gen-bioinformatics-2020">GitHub Organization</a> page here, and also at the bottom of the main course web page.</p></li>
+<li>Unix/Windows foibles
+<ul>
+<li>Use <code>sha1sum</code> for <code>shasum</code> on Windows</li>
+<li>Use <code>zcat</code> for <code>gzcat</code> on Windows.</li>
+<li>Brenna, still having <code>chmod</code> issues on windows?</li>
+</ul></li>
+<li><p>How are people feeling about permission bits.</p></li>
+<li>Plan for today.<br />
+</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Answer questions that came up.</li>
+<li>Maybe spend more time on permission bits and bit-masks.</li>
+<li>Talk about tibbles and the ‘readr’ package (we will work this into looking at some teeny genomic data files.)</li>
+</ol>
+</div>
+<div id="tibbles" class="slide section level2">
+<h1>tibbles</h1>
+<ul>
+<li>Hadley’s answer to <code>data.frame</code>s. (i.e. these are the Tidyverse equivalent of data frames).</li>
+<li>Why tibbles? Aren’t they just data frames?
+<ul>
+<li>Yes and no.</li>
+<li>Print method for tibbles is WAAAAY better.
+<ul>
+<li>won’t bomb your screen.</li>
+<li>won’t spend minutes calculating column widths</li>
+<li>Won’t wrap extra columns around.</li>
+<li>Gives data types in the header</li>
+<li>Tells you the names of additional columns that may not have been printed (up to a point)</li>
+</ul></li>
+<li>The <code>tibble()</code> constructor plays nicely with lists of the appropriate length. YAY List Columns!</li>
+<li>The <code>tibble()</code> constructor is “surly” and doesn’t let you do things that you probably don’t want it to.</li>
+</ul></li>
+<li>Everyone do this in R in your <code>unix-play-with-genomic-data</code> RStudio project:</li>
+</ul>
+<p>You will see some warnings when you do that. We will talk about those later.</p>
+<p>Now, print <code>sammy</code> by doing:</p>
+<p>and discuss.</p>
+</div>
+<div id="rs-very-own-pipe-operator" class="slide section level2">
+<h1>R’s very own pipe operator</h1>
+<ul>
+<li>Yesterday we talked about Unix’s <code>|</code> which, when used like this:</li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="ex">left_comm</span> <span class="kw">|</span> <span class="ex">right_comm</span></a></code></pre></div>
+<p>takes <em>stdout</em> from the command on the left side (<code>left_comm</code> in this case) and sends it as <em>stdin</em> to the command on the right side (<code>right_comm</code> in this case)</p>
+<p>Example:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="fu">ls</span> -l <span class="kw">|</span> <span class="fu">wc</span></a></code></pre></div>
+<p>R lacked this type of functionality for many years. For anyone who had ever worked comfortably in Unix for a long time, and was used to chaining the output of one command in as the input for another command using pipes, R’s syntax for composition of functions was always super cumbersome and required all sorts of nasty, nested parentheses.</p>
+<p>Consider this simple set of operations: imagine we want to</p>
+<ol style="list-style-type: decimal">
+<li>simulate 1000 gamma random variables, <span class="math inline">\(G\)</span>, with parameters <span class="math inline">\(\alpha=5\)</span> and <span class="math inline">\(\beta = 1\)</span>,</li>
+<li>for each <span class="math inline">\(G\)</span> simulate a Poisson random variable with mean (<code>lambda</code>) <span class="math inline">\(G\)</span>.</li>
+<li>take the <code>sqrt</code> of each such variable</li>
+<li>compute the variance of the result</li>
+</ol>
+<p>This can all be done in one line, but is ugly!</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="co"># set random seed for reproducibility</span></a>
+<a class="sourceLine" id="cb19-2" data-line-number="2"><span class="kw">set.seed</span>(<span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb19-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb19-4" data-line-number="4"><span class="kw">var</span>(<span class="kw">sqrt</span>(<span class="kw">rpois</span>(<span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">lambda =</span> <span class="kw">rgamma</span>(<span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">shape =</span> <span class="dv">5</span>, <span class="dt">scale =</span> <span class="dv">1</span>))))</a></code></pre></div>
+<pre><code>## [1] 0.5828768</code></pre>
+<p>It doesn’t matter how stylishly you include spaces in your code, this is just Fugly!</p>
+<p>You can write it on multiple lines, but it is friggin’ ghastly! Maybe worse than before.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb21-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb21-3" data-line-number="3"><span class="kw">var</span>(</a>
+<a class="sourceLine" id="cb21-4" data-line-number="4">  <span class="kw">sqrt</span>(</a>
+<a class="sourceLine" id="cb21-5" data-line-number="5">    <span class="kw">rpois</span>(<span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">lambda =</span> <span class="kw">rgamma</span>(</a>
+<a class="sourceLine" id="cb21-6" data-line-number="6">      <span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">shape =</span> <span class="dv">5</span>, <span class="dt">scale =</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb21-7" data-line-number="7">    )</a>
+<a class="sourceLine" id="cb21-8" data-line-number="8">    )</a>
+<a class="sourceLine" id="cb21-9" data-line-number="9">  )</a>
+<a class="sourceLine" id="cb21-10" data-line-number="10">)</a></code></pre></div>
+<pre><code>## [1] 0.5828768</code></pre>
+<p>The problem is that the order in which the operations are done does not match the way things are written: the first thing to get done is the call to <code>rgamma</code>, which is nested deeply within the parentheses.</p>
+<p>Enter the R “pipe” symbol. It is not as convenient to type as <code>|</code>, but you can make it quickly with the keyboard shortcut <code>cmd-shift-M</code>: <code>%&gt;%</code>. This was introduced in the <code>magrittr</code> package, and the <code>tidyverse</code> imports the <code>%&gt;%</code> symbol from <code>magrittr</code>.</p>
+<p>Behold!</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb23-2" data-line-number="2"><span class="kw">set.seed</span>(<span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb23-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb23-4" data-line-number="4"><span class="kw">rgamma</span>(<span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">shape =</span> <span class="dv">5</span>, <span class="dt">scale =</span> <span class="dv">1</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb23-5" data-line-number="5"><span class="st">  </span><span class="kw">rpois</span>(<span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">lambda =</span> .) <span class="op">%&gt;%</span><span class="st">          </span><span class="co"># pass G is as the lambda parameter using the dot: .</span></a>
+<a class="sourceLine" id="cb23-6" data-line-number="6"><span class="st">  </span><span class="kw">sqrt</span>() <span class="op">%&gt;%</span><span class="st">                               </span><span class="co"># no dot here, so the previous result is just the first argument to sqrt</span></a>
+<a class="sourceLine" id="cb23-7" data-line-number="7"><span class="st">  </span><span class="kw">var</span>()                                    <span class="co"># same here</span></a></code></pre></div>
+<pre><code>## [1] 0.5828768</code></pre>
+<p>That is a hell of a lot easier to read! It gives me goose bumps it is so elegant.</p>
+<p>The <code>%&gt;%</code> symbol says, “take the result that occurred before the <code>%&gt;%</code> and pass it in as the <code>.</code> in whatever follows the <code>%&gt;%</code>.” Furthermore, if there is no <code>.</code> in the expression after the <code>%&gt;%</code>, simply pass the result that occurred before the <code>%&gt;%</code> in as the <em>first argument</em> in the function call that comes after the <code>%&gt;%</code>.</p>
+<p>This type of “chaining” of operations is particularly powerful when operating on <code>tibbles</code> using <code>dplyr</code></p>
+</div>
+<div id="why-is-chaining-with-the-pipe-helpful" class="slide section level2">
+<h1>Why is chaining with the pipe helpful?</h1>
+<ul>
+<li>Code is easier to read and follow (and comment)</li>
+<li>Much Easier to build up steps in an analysis and test/inspect each result along the way.
+<ul>
+<li>Particularly with tibbles. You can easily look at each step along the way.</li>
+</ul></li>
+<li>Consider building up the above steps in a tibble.</li>
+<li>Note that function <code>tibble()</code> is the “Tibble Constructor”. It assembles vectors, of the same length, into a tibble. Syntax = <code>column_name = column_contents</code>).</li>
+</ul>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw">tibble</span>(<span class="dt">gammas =</span> <span class="kw">rgamma</span>(<span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">shape =</span> <span class="dv">5</span>, <span class="dt">scale =</span> <span class="dv">1</span>))</a></code></pre></div>
+<p>Then:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="kw">tibble</span>(<span class="dt">gammas =</span> <span class="kw">rgamma</span>(<span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">shape =</span> <span class="dv">5</span>, <span class="dt">scale =</span> <span class="dv">1</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb26-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">poissons =</span> <span class="kw">rpois</span>(<span class="dt">n =</span> <span class="kw">n</span>(), <span class="dt">lambda =</span> gammas))</a></code></pre></div>
+<p>Whoa! No quotation marks around column names.</p>
+<p>And so forth.</p>
+</div>
+<div id="the-view-command" class="slide section level2">
+<h1>The <code>View()</code> command</h1>
+<p>Every wanted a better look at your tibble?</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw">View</span>(sammy)</a>
+<a class="sourceLine" id="cb27-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb27-3" data-line-number="3"><span class="co"># or, more usefully in workflows:</span></a>
+<a class="sourceLine" id="cb27-4" data-line-number="4">sammy <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">View</span>()</a></code></pre></div>
+<p>Note! Huge tibbles can bog down your View…</p>
+</div>
+<div id="readr-a-tidyverse-package-for-reading-files." class="slide section level2">
+<h1><code>readr</code> a Tidyverse package for reading files.</h1>
+<p>The functions in this package provide replacements for many base-R functions, like <code>read.table</code>, <code>read.delim</code>, <code>read.csv</code>.</p>
+<p>Why use the readr functions:</p>
+<ul>
+<li>More uniform interface/syntax.</li>
+<li>Faster</li>
+<li>stringsAsFactors = FALSE, always.<br />
+</li>
+<li>Also a little “surly”. Gives you informative warnings.</li>
+<li>Automatically puts the data in a tibble.</li>
+</ul>
+<p>The readr equivalents are often named like the base-R functions, but the <code>.</code> is replaced by an <code>_</code>:</p>
+<p>In my experience, the most useful are:</p>
+<ul>
+<li><code>read_csv</code></li>
+<li><code>read_tsv</code></li>
+<li><code>read_table2</code></li>
+<li><code>read_lines</code></li>
+</ul>
+<p>There are also equivalents to write:</p>
+<ul>
+<li><code>write_csv</code></li>
+<li><code>write_tsv</code></li>
+</ul>
+<p>are my favorites.</p>
+</div>
+<div id="break-this-down" class="slide section level2">
+<h1>Break this down</h1>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">sammy &lt;-<span class="st"> </span><span class="kw">read_tsv</span>(<span class="st">&quot;sam/DPCh_plate1_A05_S5.sam&quot;</span>, <span class="dt">comment =</span> <span class="st">&quot;@&quot;</span>, <span class="dt">col_names =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p>What is up with the warnings?</p>
+<p>Try</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">problems</span>(sammy)</a></code></pre></div>
+<p>Cool! It returns a report in a tibble!</p>
+</div>
+<div id="text-editors" class="slide section level2">
+<h1>Text editors</h1>
+<p>Mac users: <code>bbedit</code> free version Windows users: <code>notepad++</code></p>
+</div>
 
   <!-- dynamically load mathjax for compatibility with self-contained -->
   <script>

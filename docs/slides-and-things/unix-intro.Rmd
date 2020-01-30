@@ -302,3 +302,220 @@ What happens when we do this:
 ls -l ~ | wc 
 ```
 
+
+
+## THURSDAY Administrative stuff, etc.:
+
+1. Homework is due Friday at 5 PM
+    - I will give out a key over the weekend.
+    - I am contemplating having each student "grade" (i.e., comment on GitHub via a pull request) another (random) student's homework.
+    - If you won't have your homework done and available for communal grading by Saturday noon, please email me.
+    
+2. I have put the link to the course [GitHub Organization](https://github.com/CSU-con-gen-bioinformatics-2020) page here, and also at the bottom of the main course web page.
+
+3. Unix/Windows foibles
+    - Use `sha1sum` for `shasum` on Windows
+    - Use `zcat` for `gzcat` on Windows.
+    - Brenna, still having `chmod` issues on windows?
+    
+4. How are people feeling about permission bits.
+
+5. Plan for today.  
+  a. Answer questions that came up.
+  b. Maybe spend more time on permission bits and bit-masks.
+  c. Talk about tibbles and the 'readr' package (we will work this into looking at some teeny genomic data files.)
+  
+  
+  
+## tibbles
+  
+* Hadley's answer to `data.frame`s. (i.e. these are the Tidyverse equivalent of data frames).
+* Why tibbles? Aren't they just data frames?
+    - Yes and no.
+    - Print method for tibbles is WAAAAY better.
+        + won't bomb your screen.
+        + won't spend minutes calculating column widths
+        + Won't wrap extra columns around.
+        + Gives data types in the header
+        + Tells you the names of additional columns that may not have been printed (up to a point)
+    - The `tibble()` constructor plays nicely with lists of the appropriate length. YAY List Columns!
+    -  The `tibble()` constructor is "surly" and doesn't let you do things that you probably don't want it to.
+* Everyone do this in R in your `unix-play-with-genomic-data` RStudio project:
+```{r, eval=FALSE}
+library(tidyverse)
+sammy <- read_tsv("sam/DPCh_plate1_A05_S5.sam", comment = "@", col_names = FALSE)
+```
+
+You will see some warnings when you do that. We will talk about those later.
+
+Now, print `sammy` by doing:
+```{r, eval=FALSE}
+sammy
+```
+and discuss.  
+
+## R's very own pipe operator
+
+* Yesterday we talked about Unix's `|` which, when used like this:
+```sh
+left_comm | right_comm
+```
+takes _stdout_ from the command on the left side (`left_comm` in this case)
+and sends it as _stdin_ to the command on the right side (`right_comm` in this case)
+
+Example:
+```sh
+ls -l | wc
+```
+
+R lacked this type of functionality for many years.
+For anyone who had ever worked comfortably in Unix for a long time, and was
+used to chaining the output of one command in as the input for another command
+using pipes, R's syntax for composition of functions was always super
+cumbersome and required all sorts of nasty, nested parentheses.  
+
+Consider this simple set of operations: imagine we want to
+
+1. simulate 1000 gamma random variables, $G$, with parameters $\alpha=5$ and $\beta = 1$,
+1. for each $G$ simulate a Poisson random variable with mean (`lambda`) $G$.
+1. take the `sqrt` of each such variable
+1. compute the variance of the result
+
+This can all be done in one line, but is ugly!
+
+```{r sim-pipe, echo=TRUE}
+# set random seed for reproducibility
+set.seed(5)
+
+var(sqrt(rpois(n = 1000, lambda = rgamma(n = 1000, shape = 5, scale = 1))))
+```
+
+It doesn't matter how stylishly you include spaces in your code, this is just Fugly!
+
+You can write it on multiple lines, but it is friggin' ghastly! Maybe worse than before.
+```{r sim-pipe-multiline, echo=TRUE}
+set.seed(5)
+
+var(
+  sqrt(
+    rpois(n = 1000, lambda = rgamma(
+      n = 1000, shape = 5, scale = 1
+    )
+    )
+  )
+)
+```
+
+The problem is that the order in which the operations are done does not match 
+the way things are written: the first thing to get done is the call to `rgamma`,
+which is nested deeply within the parentheses.
+
+Enter the R "pipe" symbol.  It is not as convenient to type as `|`, but you can
+make it quickly with the keyboard shortcut `cmd-shift-M`:  `%>%`.  This was introduced
+in the `magrittr` package, and the `tidyverse` imports the `%>%` symbol from `magrittr`.  
+
+Behold!
+```{r true-pipe, message=FALSE, echo=TRUE}
+library(tidyverse)
+set.seed(5)
+
+rgamma(n = 1000, shape = 5, scale = 1) %>%
+  rpois(n = 1000, lambda = .) %>%          # pass G is as the lambda parameter using the dot: .
+  sqrt() %>%                               # no dot here, so the previous result is just the first argument to sqrt
+  var()                                    # same here
+```
+That is a hell of a lot easier to read!  It gives me goose bumps it is so elegant.
+
+The `%>%` symbol says, "take the result that occurred before the `%>%` and pass it in as the `.` in whatever follows
+the `%>%`."  Furthermore, if there is no `.` in the expression after the `%>%`, simply pass 
+the result that occurred before the `%>%` in as the _first argument_ in the function call that comes after the `%>%`.
+
+This type of "chaining" of operations is particularly powerful when operating on `tibbles` using `dplyr`
+
+
+## Why is chaining with the pipe helpful?
+
+* Code is easier to read and follow (and comment)
+* Much Easier to build up steps in an analysis and test/inspect each result along the way.
+    - Particularly with tibbles.  You can easily look at each step along the way.
+* Consider building up the above steps in a tibble.
+* Note that function `tibble()` is the "Tibble Constructor".  It assembles vectors, of the same length,
+into a tibble.  Syntax = `column_name = column_contents`).
+```{r, eval=FALSE, echo=TRUE}
+tibble(gammas = rgamma(n = 1000, shape = 5, scale = 1))
+```
+
+Then:
+```{r, eval=FALSE, echo=TRUE}
+tibble(gammas = rgamma(n = 1000, shape = 5, scale = 1)) %>%
+  mutate(poissons = rpois(n = n(), lambda = gammas))
+```
+Whoa! No quotation marks around column names.
+
+And so forth.
+
+
+## The `View()` command
+
+Every wanted a better look at your tibble?
+
+```r
+View(sammy)
+
+# or, more usefully in workflows:
+sammy %>% View()
+```
+
+Note!  Huge tibbles can bog down your View...
+
+## `readr` a Tidyverse package for reading files.
+
+The functions in this package provide replacements for many base-R functions, like
+`read.table`, `read.delim`, `read.csv`.  
+
+Why use the readr functions:
+
+* More uniform interface/syntax.
+* Faster
+* stringsAsFactors = FALSE, always.  
+* Also a little "surly".  Gives you informative warnings.
+* Automatically puts the data in a tibble.
+
+The readr equivalents are often named like the base-R functions, but the
+`.` is replaced by an `_`:
+
+In my experience, the most useful are:
+
+* `read_csv`
+* `read_tsv`
+* `read_table2`
+* `read_lines`
+
+There are also equivalents to write:
+
+* `write_csv`
+* `write_tsv`
+
+are my favorites.
+
+## Break this down
+
+```r
+sammy <- read_tsv("sam/DPCh_plate1_A05_S5.sam", comment = "@", col_names = FALSE)
+```
+
+What is up with the warnings?
+
+Try
+```r
+problems(sammy)
+```
+
+Cool! It returns a report in a tibble!
+
+
+
+## Text editors
+
+Mac users: `bbedit` free version
+Windows users: `notepad++`
