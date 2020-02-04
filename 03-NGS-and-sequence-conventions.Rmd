@@ -6,15 +6,14 @@ Preamble, preamble, preamble.
 
 ## Required Readings {-}
 
-1. Write another chapter in the handbook for this
+1. [eca-bioinf-handbook 15.1 to 15.3](https://eriqande.github.io/eca-bioinf-handbook/dna-sequences-and-sequencing.html)
 2. Watch the Illumina Video embellished by Eric's captions here:
 [https://eriqande.github.io/erics-captioned-vids/vids/illumina-sbs/](https://eriqande.github.io/erics-captioned-vids/vids/illumina-sbs/)
+3. [eca-bioinf-handbook- fastq section](https://eriqande.github.io/eca-bioinf-handbook/bioinformatic-file-formats-and-associated-tools.html#fastq)
 
 ## Recommended Readings {-}
 
-1. This
-2. That
-3. More
+There will be more
 
 ## Exercises due by MM/DD/YYY {-}
 
