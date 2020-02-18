@@ -1,0 +1,17 @@
+# More bioinformatic formats, and shell scripting
+
+* Tuesday: More on SAM flags and CIGAR strings.
+* Thursday: Day 1 of advanced shell scripting in bash
+
+---
+
+## Required Readings {-}
+
+1. [eca-bioinf-handbook](https://eriqande.github.io/eca-bioinf-handbook/bioinformatic-file-formats.html) (For Tuesday: SAM flags and CIGAR strings)
+2. [eca-bioinf-handbook](https://eriqande.github.io/eca-bioinf-handbook/shell-programming.html) (For Thursday: Shell programming, day 1. Sections 5.1 to 5.3)
+
+
+---
+
+
+

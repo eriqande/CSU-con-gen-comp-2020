@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Advanced Computing and Bioinformatics for Conservation Genomics. CSU FWCB/BZ 5XX</title>
+  <title>Week 8 HPC clusters and scheduling | Advanced Computing and Bioinformatics for Conservation Genomics. CSU FWCB/BZ 5XX</title>
   <meta name="description" content="Course Website for CSU Con-Gen Computing Course" />
   <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Advanced Computing and Bioinformatics for Conservation Genomics. CSU FWCB/BZ 5XX" />
+  <meta property="og:title" content="Week 8 HPC clusters and scheduling | Advanced Computing and Bioinformatics for Conservation Genomics. CSU FWCB/BZ 5XX" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Advanced Computing and Bioinformatics for Conservation Genomics. CSU FWCB/BZ 5XX" />
+  <meta name="twitter:title" content="Week 8 HPC clusters and scheduling | Advanced Computing and Bioinformatics for Conservation Genomics. CSU FWCB/BZ 5XX" />
   
   <meta name="twitter:description" content="Course Website for CSU Con-Gen Computing Course" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
+<link rel="prev" href="more-on-working-on-remote-computers.html"/>
 
-<link rel="next" href="getting-setup-with-rstudio-a-bash-shell-and-github.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -135,202 +135,26 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Advanced Computing and Bioinformatics for Conservation Genomics. CSU FWCB/BZ 5XX</h1>
-<p class="author"><em><strong>Instructors:</strong> Eric C. Anderson and Kristen C. Ruegg</em></p>
-<p class="date"><em><strong>Site Last Updated:</strong> 2020-02-18</em></p>
-</div>
-<div id="course-overview" class="section level1 unnumbered">
-<h1>Course Overview</h1>
-<p>Welcome to the course web page for Advanced Computing and Bioinformatics for Conservation Genomics,
-an experimental course being offered for the first time in Winter Semester 2020. We will be covering
-computing, analysis and data-organization strategies for bioinformatics and analysis of high-throughput sequencing data for ecology,
-evolution, and conservation.</p>
-<p>Modern high-throughput sequencing can provide extraordinary amounts of data, enabling researchers to tackle a wide range of questions and problems in ecology, evolution, conservation, and fisheries and wildlife management. Preparing and processing these data for use, however, requires multiple bioinformatic steps, and subsequent analysis of these large, complex data sets must rely on specialized computer programs. Mastering these skills presents a high bar for students originating from outside of computer science and related fields. At present, in many institutions, such skills are typically learned from peers within experienced laboratories, or through a variety of workshops. This course aims to comprehensively teach the computing and analytical skills necessary to use genomic data from high-throughput sequencing in the context of ecological research. During the first 2/3 of the course, the focus is on aligning DNA sequence data and identifying variants across multiple individuals. In the last 1/3 of the course we consider a series of case studies in how such data are used to make inference for applications in fisheries, wildlife, and conservation. Outside of the bioinformatic utilities that run within a Unix framework, emphasis is placed on using the R programming language and RStudio for project management and documentation.</p>
-<p>The proposed course
-topics appear, by week, in the table below. Each week of the course is structured as a different
-chapter in the navigation panel on the left. In order to figure out what we are doing in the course
-each week, that will be the first place to check. The week’s objectives, readings, and exercises will
-be listed there.</p>
-<div id="course-schedule" class="section level2 unnumbered">
-<h2>Course schedule</h2>
-<p>The course schedule is:</p>
+<div id="hpc-clusters-and-scheduling" class="section level1">
+<h1><span class="header-section-number">Week 8</span> HPC clusters and scheduling</h1>
+<p>Understanding how scheduling systems work</p>
 <ul>
-<li>Tu,Th 11:00-12:15 in BIO 133. Lectures</li>
-<li>Wed 8:00-9:50 in BIO 133. Discussion/Computer lab</li>
+<li>Tuesday: Intro to SLURM</li>
+<li>Thursday: Job arrays in SLURM</li>
 </ul>
-<p>Students are expected to have a laptop.</p>
-</div>
-<div id="course-learning-objectives" class="section level2 unnumbered">
-<h2>Course Learning Objectives</h2>
-<p>Upon successful completion of the course, students will be able to:</p>
+<hr />
+<div id="required-readings-7" class="section level2 unnumbered">
+<h2>Required Readings</h2>
 <ol style="list-style-type: decimal">
-<li>Organize and execute a complex bioinformatic data-analysis project in a manner that makes it easily understood and reproduced by others.</li>
-<li>Describe the main data formats used in genomic analysis, and know how to generate and manipulate them.</li>
-<li>Work with a wide range of the bioinformatic tools available in the Unix environment and understand how to script these tools into pipelines for DNA sequence alignment, variant calling, and analysis.</li>
-<li>Understand how to break down complex genomic analysis projects into small, independent chunks and execute those using job arrays on a high performance computing cluster.</li>
-<li>Perform a variety of computational analyses central to conservation genetics.</li>
+<li>SLURM readings. Not yet written.</li>
 </ol>
 </div>
-<div id="assessment" class="section level2 unnumbered">
-<h2>Assessment</h2>
-<p>Assessment will be based mostly on weekly problem sets. These will sometimes require
-considerable time and thought, but they will be critical for solidifying the concepts
-and procedures in the course. Students will also be undertaking individual projects
-in which they apply the skills they have learned in the course to a data set
-relevant in some way to their own research or to an interesting question relevant
-to some existing data, after discussion with the instructors (see <a href="index.html#indproj">below</a>).
-Finally, students are expected to contribute to discussion and participation in the course,
-including (and most importantly) being helpful to one another in order to learn challenging material,
-together, in a supportive environment.</p>
-<blockquote>
-<p>“It is literally true that you can succeed best
-and quickest by helping others to succeed.”</p>
-<footer>
--–- Napolean Hill
-</footer>
-</blockquote>
-<p> </p>
-<table>
-<thead>
-<tr class="header">
-<th>Assessment Component</th>
-<th>Percentage of Grade</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Problem sets</td>
-<td>60%</td>
-</tr>
-<tr class="even">
-<td>Individual analysis projects</td>
-<td>30%</td>
-</tr>
-<tr class="odd">
-<td>Class participation</td>
-<td>10%</td>
-</tr>
-</tbody>
-</table>
+<div id="recommended-readings-5" class="section level2 unnumbered">
+<h2>Recommended Readings</h2>
 </div>
-<div id="weekly-schedule" class="section level2 unnumbered">
-<h2>Weekly Schedule</h2>
-<p>The schedule is subject to change as the semester proceeds, but this
-is what we are shooting for.</p>
-<table>
-<colgroup>
-<col width="14%" />
-<col width="50%" />
-<col width="35%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Week</th>
-<th>Lecture Component</th>
-<th>Lab Component</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>Rstudio Projects, GitHub</td>
-<td>Rmarkdown, git and GitHub</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>Unix, directory structure, utilities</td>
-<td>Unix, data compression</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>Next generation sequencing, alignment conventions, FASTA, SAM</td>
-<td>Samtools (faidx)</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>Shell scripting, regular expressions, sed and awk</td>
-<td>Shell scripting and awk</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>Remote computers, ssh, rclone, HPC, SLURM, SGE</td>
-<td>Connecting to Summit Cluster</td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td>Sequence alignment, job arrays, parallelization over individuals</td>
-<td>bwa, samtools (sort, merge, cat, index)</td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td>Variant calling – I, fundamental concepts</td>
-<td>GATK, Base quality score recalibration</td>
-</tr>
-<tr class="even">
-<td>8</td>
-<td>Variant calling – II, parallelization over regions</td>
-<td>GATK, gVCFs, VCFs</td>
-</tr>
-<tr class="odd">
-<td>9</td>
-<td>Variant Filtering, manipulation, exploration, LD and pop-gen statistics</td>
-<td>bcftools, bedtools, R package ‘whoa’, plink</td>
-</tr>
-<tr class="even">
-<td>10</td>
-<td>Restriction-associated digest (RAD) sequencing</td>
-<td>STACKS2, R package ‘radiator’</td>
-</tr>
-<tr class="odd">
-<td>11</td>
-<td>Visualization of genomic data in space</td>
-<td>R packages: ‘ggplot’, ‘sf’</td>
-</tr>
-<tr class="even">
-<td>12</td>
-<td>Visualization of genomic data: trees</td>
-<td>R packages: ‘ape’, ‘ggtree’</td>
-</tr>
-<tr class="odd">
-<td>13</td>
-<td>Population structure</td>
-<td>R package ‘srsStuff’</td>
-</tr>
-<tr class="even">
-<td>14</td>
-<td>Inbreeding, runs of homozygosity</td>
-<td>bcftools roh, plink</td>
-</tr>
-<tr class="odd">
-<td>15</td>
-<td>Genome wide association studies</td>
-<td>ANGSD, snpEff</td>
-</tr>
-<tr class="even">
-<td>16</td>
-<td>Genotype-environment association</td>
-<td>Gradient Random Forest, RDA</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="indproj" class="section level2 unnumbered">
-<h2>Individual Projects</h2>
-<p>The purpose of the individual projects is to allow the students to use
-many of the skills learned, and to gain experience in preparing a reproducible
-research project. Some students likely already have their own data sets
-that they are working on, but we expect that many will not. We will be
-able to provide data and interesting questions to tackle from our own research.
-Additionally, we will encourage students to take on related projects so that
-they can work together on different parts of a single question.</p>
-</div>
-<div id="ghorg" class="section level2 unnumbered">
-<h2>Course GitHub Organization</h2>
-<p>A large part of this course will entail getting familiar with git and GitHub.
-Homework assignments will be distributed via GitHub Classroom. The resulting
-repositories for all students can be found in the CSU-con-gen-bioinformatics-2020 GitHub Organization page
-at <a href="https://github.com/CSU-con-gen-bioinformatics-2020">https://github.com/CSU-con-gen-bioinformatics-2020</a>.</p>
+<div id="exercises-due-by-mmddyyy-2" class="section level2 unnumbered">
+<h2>Exercises due by MM/DD/YYY</h2>
+<hr />
 
 </div>
 </div>
@@ -339,8 +163,8 @@ at <a href="https://github.com/CSU-con-gen-bioinformatics-2020">https://github.c
           </div>
         </div>
       </div>
+<a href="more-on-working-on-remote-computers.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="getting-setup-with-rstudio-a-bash-shell-and-github.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -371,7 +195,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/eriqande/CSU-con-gen-comp-2020/edit/master/index.Rmd",
+"link": "https://github.com/eriqande/CSU-con-gen-comp-2020/edit/master/08-hpc-and-slurm.Rmd",
 "text": "Edit"
 },
 "history": {

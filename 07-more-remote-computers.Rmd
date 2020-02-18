@@ -1,0 +1,25 @@
+# More on working on remote computers
+
+Here we will continue making sure we are all set up to work efficiently on remote servers.
+
+* Tuesday and Thursday: Using `tmux`, `miniconda` and `vim`.
+* Wednesday: We will be making sure everyone has miniconda installed.
+
+
+---
+
+## Required Readings {-}
+
+1. [eca-bioinf-handbook](https://eriqande.github.io/eca-bioinf-handbook/working-on-remote-servers.html) (For Tuesday: Section 7.3)
+2. Miniconda readings.  Not yet written.
+
+
+## Recommended Readings {-}
+
+
+## Exercises due by MM/DD/YYY {-}
+
+
+
+---
+

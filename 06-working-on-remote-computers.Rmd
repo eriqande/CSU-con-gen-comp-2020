@@ -1,0 +1,24 @@
+# Working on remote computers
+
+Here we will get all set up to work efficiently on remote servers.
+
+* Tuesday: Logging on, transferring files, using git  
+* Wednesday: Eric has a conflict but will try to make it the lab session from 9 to 10  
+* Thursday: NO CLASS! Eric is traveling.
+
+---
+
+## Required Readings {-}
+
+1. [eca-bioinf-handbook](https://eriqande.github.io/eca-bioinf-handbook/working-on-remote-servers.html) (For Tuesday: Sections 7.1 and 7.2)
+
+
+## Recommended Readings {-}
+
+
+## Exercises due by MM/DD/YYY {-}
+
+
+
+---
+

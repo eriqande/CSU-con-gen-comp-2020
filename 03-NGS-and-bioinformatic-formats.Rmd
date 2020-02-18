@@ -1,16 +1,17 @@
-# Next generation sequencing and associated conventions
+# Next generation sequencing and bioinformatic file formats
 
-Preamble, preamble, preamble.
+* Tuesday: DNA sequences and sequencing. FASTQ files.
+* Thursday: FASTA and SAM formats.
 
 ---
 
 ## Required Readings {-}
 
-1. [eca-bioinf-handbook 15.1 to 15.3](https://eriqande.github.io/eca-bioinf-handbook/dna-sequences-and-sequencing.html) (For Tuesday)
+1. [eca-bioinf-handbook 16.1 to 16.3](https://eriqande.github.io/eca-bioinf-handbook/dna-sequences-and-sequencing.html) (For Tuesday, DNA Sequences and Sequending)
 2. Watch the Illumina Video embellished by Eric's captions here:
 [https://eriqande.github.io/erics-captioned-vids/vids/illumina-sbs/](https://eriqande.github.io/erics-captioned-vids/vids/illumina-sbs/)
-3. [eca-bioinf-handbook--fastq](https://eriqande.github.io/eca-bioinf-handbook/bioinformatic-file-formats-and-associated-tools.html#fastq) (For Tuesday)
-3. [eca-bioinf-handbook--FASTA and SAM 16.3  and 16.4](https://eriqande.github.io/eca-bioinf-handbook/bioinformatic-file-formats-and-associated-tools.html#fasta) (For Thursday)
+3. [eca-bioinf-handbook](https://eriqande.github.io/eca-bioinf-handbook/bioinformatic-file-formats.html) (For Tuesday: Sequences and FASTQ)
+3. [eca-bioinf-handbook](https://eriqande.github.io/eca-bioinf-handbook/bioinformatic-file-formats.html) (For Thursday: FASTA and SAM)
 
 ## Recommended Readings {-}
 

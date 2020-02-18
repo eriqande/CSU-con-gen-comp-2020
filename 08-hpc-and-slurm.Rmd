@@ -1,0 +1,24 @@
+# HPC clusters and scheduling
+
+Understanding how scheduling systems work
+
+* Tuesday: Intro to SLURM
+* Thursday: Job arrays in SLURM
+
+
+---
+
+## Required Readings {-}
+
+1. SLURM readings. Not yet written.
+
+
+## Recommended Readings {-}
+
+
+## Exercises due by MM/DD/YYY {-}
+
+
+
+---
+

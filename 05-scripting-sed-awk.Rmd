@@ -1,0 +1,21 @@
+# Shell scripting and awk and sed
+
+* Tuesday: Day 2 of advanced shell scripting in bash
+* Thursday: `awk`, `sed`, and regular expressions
+
+---
+
+## Required Readings {-}
+
+1. [eca-bioinf-handbook](https://eriqande.github.io/eca-bioinf-handbook/shell-programming.html) (For Tuesday: Shell programming, day 1. Sections 5.4 to 5.12)
+1. awk and sed readings  (For Thursday, still being written). 
+
+---
+
+
+
+## Exercises due by 02/21/2020 {-}
+
+We have some shell scripting exercises.  They are in a GitHub repo
+at [https://github.com/eriqande/shell-scripting-homework](https://github.com/eriqande/shell-scripting-homework), but will be tweaked slightly, and
+a link sent to the class via GitHub Classroom.
